@@ -1,0 +1,42 @@
+[
+  {
+    "tagname": "Cuttime",
+    "maxVal": 11,
+    "minVal": 1,
+    "average": 3,
+    "standardDeviation": 3,
+    "required": true
+  },
+  {
+    "tagname": "SpindleLoad",
+    "maxVal": 33,
+    "minVal": 3,
+    "average": 3,
+    "standardDeviation": 1,
+    "required": true
+  },
+  {
+    "tagname": "SpindleSpeed",
+    "maxVal": 333,
+    "minVal": 22,
+    "average": 1,
+    "standardDeviation": 1,
+    "required": true
+  },
+  {
+    "tagname": "Runtime",
+    "maxVal": 22,
+    "minVal": 1,
+    "average": 11.5,
+    "standardDeviation": 1,
+    "required": true
+  },
+  {
+    "tagname": "AbsPos_x",
+    "maxVal": null,
+    "minVal": null,
+    "average": null,
+    "standardDeviation": null,
+    "required": false
+  }
+]

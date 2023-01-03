@@ -1,0 +1,52 @@
+// contents 상단바
+
+.uvc-topbar {
+  height:70px;
+  border-bottom:1px solid map-get($u-body, line);
+  margin-bottom:20px;
+  @include flex($j:space-between);
+  h2 {
+    @include flex;
+    @include font(22, $wt:700);
+    img {
+      width:24px;
+      margin-right:10px;
+    }
+  }
+
+  .description {
+    color:map-get($u-body, script);
+    font-size:12px;
+    margin-left:1em;
+  }
+}
+
+@include media($pc) {
+  .uvc-topbar {
+    .site-path {
+      display:none;
+    }
+  }
+}
+
+@include media($tablet) {
+  .uvc-topbar {
+    h2 {
+      flex-shrink:0;
+      img {
+        display:none;
+      }
+    } 
+  }
+}
+
+@media all and (max-width:600px) {
+  .uvc-topbar {
+    display:block;
+
+    .description {
+      margin-left:0;
+      line-height:1.2;
+    }
+  }
+}

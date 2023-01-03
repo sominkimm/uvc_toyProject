@@ -1,0 +1,474 @@
+
+/* vue-elder-button */
+
+.bcClass {
+  transition: all .3s ease-in-out;
+  height: 37px;
+  margin: 0 2px 0 5px;
+}
+
+.bcClass:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.elder-button__label {
+  color: white;
+}
+
+.elder-button--icon-left .elder-button__icon {
+  transition: all .3s ease-in-out;
+  color: white;
+}
+
+/* dataPreprocessing card */
+
+.card.preprocessed-card {
+  overflow-y: auto;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+
+  .content {
+    top: 10px;
+  }
+}
+
+.card-style {
+  //overflow-y: auto;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  padding:10px;
+
+  .content {
+    top: 10px;
+  }
+}
+
+.label-style {
+  font-weight: bold;
+  padding: 5px 0 10px 0;
+
+  span {
+    font-weight: normal;
+  }
+}
+
+.anomaly-table-tr {
+  background: $uvc-main;
+
+  span {
+    color: white;
+    font-weight: bolder;
+  }
+}
+
+.anomaly-table-tr:hover {
+  background: $uvc-main;
+
+  span {
+    color: black;
+  }
+}
+ 
+.profile-table-tr {
+  td.vgt-left-align {
+    padding-top: 13px;
+    padding-bottom: 17px;
+  }
+}
+
+.remove-class {
+  color: red;
+}
+div.vgt-wrap.polar-bear {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+
+/*
+=====
+DEPENDENCES
+=====
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Amaranth:700,400&display=swap');
+
+/* The component will reset browser's styles of link */
+
+.r-link{
+  --uirLinkDisplay: var(--rLinkDisplay, inline-block);
+  --uirLinkTextColor: var(--rLinkTextColor);
+  --uirLinkTextDecoration: var(--rLinkTextDecoration, none);
+
+  display: var(--uirLinkDisplay) !important;
+  color: var(--uirLinkTextColor) !important;
+  text-decoration: var(--uirLinkTextDecoration) !important;
+}
+
+/* The component will reset browser's styles of titles */
+
+.r-title{
+  --uirTitleMarginTop: var(--rTitleMarginTop, 0);
+  --uirTitleMarginBottom: var(--rTitleMarginBottom, 0);
+
+  margin-top: var(--uirTitleMarginTop) !important;
+  margin-bottom: var(--uirTitleMarginBottom) !important;
+}
+
+/*
+=====
+CORE STYLES
+=====
+*/
+
+.animated-underline{
+  --uiAnimatedUnderlineWidth: var(--animatedUnderlineWidth, 100%);
+  --uiAnimatedUnderlineHeight: var(--animatedUnderlineHeight, 2px);
+  --uiAnimatedUnderlineBgColor: var(--animatedUnderlineBgColor, currentColor);
+  --uiAnimatedUnderlinePositionX: var(--animatedUnderlinePositionX, left);
+  --uiAnimatedUnderlinePositionY: var(--animatedUnderlinePositionY, bottom);
+
+  /*
+      1. For multi-line animated underline the "inline" value for the display property is compulsory.
+      2. Adds opportunity to create multi-line padding
+  */
+
+  --rLinkDisplay: inline; /* 1 */
+
+  background-image: linear-gradient(0, var(--uiAnimatedUnderlineBgColor) 0, var(--uiAnimatedUnderlineBgColor));
+  background-size: var(--uiAnimatedUnderlineWidth) var(--uiAnimatedUnderlineHeight);
+  background-position: var(--uiAnimatedUnderlinePositionX) var(--uiAnimatedUnderlinePositionY);
+  background-repeat: no-repeat;
+
+  -webkit-box-decoration-break: clone; /* 2 */
+  box-decoration-break: clone; /* 2 */
+
+  will-change: background-size;
+  transition: background-size .25s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+/*
+=====
+SETTINGS
+=====
+*/
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+:root{
+  --animatedUnderlineHeight: 1rem;
+  --animatedUnderlineBgColor: var(--accentColor);
+}
+
+.animated-underline_type1{
+  --animatedUnderlineWidth: 100%;
+}
+
+.animated-underline_type1:hover{
+  --animatedUnderlineHeight: 100%;
+}
+
+.animated-underline_type2{
+  --animatedUnderlineWidth: 100%;
+}
+
+.animated-underline_type2:hover{
+  --animatedUnderlineWidth: 0;
+}
+
+.animated-underline_type3{
+  --animatedUnderlineHeight: 0;
+}
+
+.animated-underline_type3:hover{
+  --animatedUnderlineHeight: 100%;
+}
+
+.animated-underline_type4{
+  --animatedUnderlineWidth: 0;
+}
+
+.animated-underline_type4:hover{
+  --animatedUnderlineWidth: 100%;
+}
+
+.animated-underline_type5{
+  --animatedUnderlineWidth: 100%;
+  --animatedUnderlineHeight: 5px;
+  --animatedUnderlinePositionY: 90%;
+}
+
+.animated-underline_type5:hover{
+  --animatedUnderlineHeight: 1rem;
+}
+
+/*
+=====
+DEMO
+=====
+*/
+
+:root{
+  --mainColor: #673AB7;
+  --accentColor: #ff7eb2;
+  --accentColorDark: #f15493;
+  --blackColor: #222;
+  --whiteColor: #fff;
+  --rLinkTextColor: var(--blackColor);
+}
+
+.page{
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page__name-effect{
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: .875rem;
+}
+
+.page__name-effect::before{
+  content: "";
+  width: 3.75rem;
+  height: 2px;
+  background-color: var(--mainColor);
+  margin-top: .25rem;
+  margin-right: .625rem;
+}
+
+.page__section:nth-child(n+2){
+  margin-top: 5rem;
+}
+
+.page__group{
+  margin-top: 2rem;
+}
+
+.news{
+  position: relative;
+
+  padding: 70px 6%;
+  border-top: 6px solid var(--mainColor);
+  border-radius: 4px;
+
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 1px 5px 0 rgba(0,0,0,.2);
+  background-color: var(--whiteColor);
+}
+
+.news:nth-child(n+2){
+  margin-top: 3rem;
+}
+
+.news__date{
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.news__title{
+  font-family: 'Amaranth', sans-serif;
+  line-height: 1.25;
+}
+
+.news__link::after{
+  content: "";
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.news__content{
+  margin-top: 1.875rem;
+}
+
+
+@media (max-width: 960px){
+
+  .page{
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .page__name-effect{
+    padding-left: .625rem;
+    padding-right: .625rem;
+  }
+
+  .news__title{
+    --rTitleMarginTop: .75rem;
+    font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 961px){
+
+  .page{
+    padding: 80px 50px;
+  }
+
+  .news__header{
+    display: flex;
+    align-items: flex-start;
+
+    padding-left: 1.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .news__date{
+    flex-shrink: 0;
+    font-family: 'Amaranth', sans-serif;
+
+    margin-right: 40px;
+    text-align: center;
+  }
+
+  .news__day{
+    line-height: 1;
+    display: block;
+    font-size: 4.333rem;
+    color: var(--accentColorDark);
+  }
+
+  .news__year{
+    display: block;
+    font-size: 1rem;
+    margin-top: 5px;
+  }
+
+  .news__title{
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 1301px){
+
+  .page__group{
+    padding-left: 190px;
+    padding-right: 100px;
+  }
+}
+
+.app-description {
+  color: #243A73;
+  font-size: 11px;
+}
+
+/* required field */
+.app-required:after {
+  content: "*";
+  color: #FF5252;
+}
+
+/* validation text */
+.app-validation {
+  color: #FF5252;
+  font-size: 11px;
+}
+
+div.app-validation.table-in {
+  position: absolute;
+  margin-bottom: 10px;
+}
+
+// table.vgt-table td {
+//   padding-bottom: 20px;
+//   border: 2px solid gold;
+// }
+
+.mdicon-icon-delete {
+  color: map-get($solid-colors, "red");
+}
+.mdicon-icon-update {
+  color: map-get($solid-colors, "blue");
+}
+
+.vgt-fixed-header {
+  width: 99.6%;
+}
+
+/* vue-good-table 원래설정 수정 */
+table.tableOne.vgt-table thead tr th {
+  color: #16213E;
+  font-weight: 900;
+}
+
+div.vgt-fixed-header {
+  width: 99.6%;
+  display: contents;
+}
+
+div.vgt-fixed-header thead {
+  display:inline-block;
+  // border-bottom: 0.1rem solid #F1F1F1;
+}
+
+div.vgt-responsive thead {
+  width: 99.6%;
+  visibility: collapse;
+}
+
+.vgt-selection-info-row {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+.vgt-fixed-header {
+  width: 99.6%;
+}
+.vgt-wrap__footer {
+  padding: 0.2em 0em 0.2em 0.75em !important
+}
+.vgt-wrap__footer .footer__row-count__label {
+  font-size: 13px !important;
+  margin-bottom: 0px !important;
+}
+.vgt-wrap__footer .footer__row-count__select {
+  font-size: 13px !important
+}
+.vgt-wrap__footer .footer__navigation {
+  font-size: 13px !important
+}
+.vgt-wrap__footer .footer__navigation__page-btn span {
+  font-size: 13px !important
+}
+.vgt-wrap__footer .footer__navigation__page-info__current-entry {
+  margin-left: 0px !important
+}
+
+.vgt-fixed-header {
+  width: 99.6%; // 스크롤 칸을 남기기위해서
+}
+
+// mdicon list -------------------------------------------------------------------
+.app-mdicon-dashboard-topbar {
+  color: white;
+}
+
+// _color.scss
+.app-mdicon-success {
+  color: map-get($solid-colors, "green");
+}
+.app-mdicon-info {
+  color: map-get($solid-colors, "blue");
+}
+.app-mdicon-warning {
+  color: map-get($solid-colors, "yellow");
+}
+.app-mdicon-danger {
+  color: map-get($solid-colors, "red");
+}
+
+
+// DevExtrem list -------------------------------------------------------------------
+.btn.app-devextrem-btn  {
+  border: none !important;
+}
+// devGrid 내의 버튼 css 

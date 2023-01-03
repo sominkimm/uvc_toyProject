@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+      <link href="//cdn.syncfusion.com/ej2/ej2-base/styles/material.css" rel="stylesheet" />
+      <link href="//cdn.syncfusion.com/ej2/ej2-inputs/styles/material.css" rel="stylesheet" />
+      <link href="//cdn.syncfusion.com/ej2/ej2-dropdowns/styles/material.css" rel="stylesheet" />
+      <link href="//cdn.syncfusion.com/ej2/ej2-buttons/styles/material.css" rel="stylesheet" />
+
+<!--      <link href="https://cdn.syncfusion.com/ej2/material.css" rel="stylesheet" type="text/css" />-->
+      <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <style>
+      .app-public-loading{
+          width:200px;
+          height:60px;
+          position: absolute;
+          left:50%;
+          top:50%;
+          transform: translate(-50%, -50%);
+      }
+      .app-public-loading .circle{
+          width:20px;
+          height:20px;
+          position: absolute;
+          border-radius: 50%;
+          background-color: #2a3042;
+          left:15%;
+          transform-origin: 50%;
+          animation: circle .7s alternate infinite ease;
+      }
+
+      @keyframes circle{
+          0%{
+              top:60px;
+              height:5px;
+              border-radius: 50px 50px 25px 25px;
+              transform: scaleX(1.7);
+          }
+          40%{
+              height:20px;
+              border-radius: 50%;
+              transform: scaleX(1);
+          }
+          100%{
+              top:0%;
+          }
+      }
+      .app-public-loading .circle:nth-child(2){
+          left:45%;
+          animation-delay: .2s;
+      }
+      .app-public-loading .circle:nth-child(3){
+          left:auto;
+          right:15%;
+          animation-delay: .3s;
+      }
+      .app-public-loading .shadow{
+          width:20px;
+          height:4px;
+          border-radius: 50%;
+          background-color: rgba(0,0,0,.5);
+          position: absolute;
+          top:62px;
+          transform-origin: 50%;
+          z-index: -1;
+          left:15%;
+          filter: blur(1px);
+          animation: shadow .9s alternate infinite ease;
+      }
+
+      @keyframes shadow{
+          0%{
+              transform: scaleX(1.5);
+          }
+          40%{
+              transform: scaleX(1);
+              opacity: .7;
+          }
+          100%{
+              transform: scaleX(.2);
+              opacity: .4;
+          }
+      }
+      .app-public-loading .shadow:nth-child(4){
+          left: 45%;
+          animation-delay: .2s
+      }
+      .app-public-loading .shadow:nth-child(5){
+          left:auto;
+          right:15%;
+          animation-delay: .3s;
+      }
+      /* .wrapper span{
+          position: absolute;
+          top:75px;
+          font-family: 'Lato';
+          font-size: 20px;
+          letter-spacing: 12px;
+          color: #2a3042;
+          left:15%;
+      } */
+    </style>
+
+    <title>FLEXING CPS</title>
+  </head>
+
+  <body class="text-left">
+    <noscript>
+      <strong>
+        We're sorry but gull-vue doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
+      >
+    </noscript>
+
+    <!-- built files will be auto injected -->
+
+    <div class="loading_wrap" id="loading_wrap">
+      <div class="app-public-loading">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+      </div>
+    </div>
+
+    <div id="app"></div>
+  </body>
+</html>

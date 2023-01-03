@@ -1,0 +1,36 @@
+ .uvc-main-wrap {
+    position:relative;
+    margin-top:42px; 
+    padding-right:20px;
+    padding-left:$sidebar + 20px;
+    transition:padding 0.3s;
+}
+
+.container-fluid {
+  padding:0;
+}
+
+// 기존 컴포넌트 수정
+.uvc-main-wrap .main-content {
+  // .row {display:none}
+  .customizer .card {
+    background:#fff;
+  }
+  .card {background:transparent;}
+  .nav {
+    .dropdown-toggle {
+
+    }
+  }
+}
+
+// 좌측에 메뉴 열렸을 때
+.uvc-main-wrap.expand {
+  padding-left:80px; 
+ }
+
+@include media($pc) {
+ .uvc-main-wrap {
+  padding-left:80px; 
+ }
+}

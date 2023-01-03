@@ -1,0 +1,215 @@
+.modeler-wrap {
+
+  .modeler-topbar {
+    background:transparent;
+    @include flex($j:space-between, $d:row);
+   
+  
+    .view-change { 
+      @include flex;
+      button {
+        position:relative;
+        z-index:1;
+        width:140px;
+        height:28px;
+        border:1px solid $u-main;
+        border-radius:30px;
+        background:#fff;
+        @include flex($j:center);
+        transition:0.4s;
+  
+  
+        &.active {
+          background-color:$u-main;
+          color:#fff;
+          z-index:3;
+          height:32px;
+          &:before {
+            content:'';
+            display:inline-block;
+            @include icon('visibility_on.svg',24);
+            margin-right:4px;
+          }
+        }
+  
+        &:last-child {
+          transform:translateX(-30px);
+          z-index:2;
+        }
+  
+       &:hover {
+        box-shadow:0 0 10px rgba($u-main,0.3);
+       }
+      }
+    }
+  
+    .right {
+      flex:1;
+      @include flex($j:flex-end);
+    }
+
+    // 모델러 우측상단 버튼들
+    .modeler-nav { 
+      @include flex($j:flex-end);
+      li:not(:first-child) {
+        margin-left:4px;
+      }
+      button {
+        background-color:map-get($modeler-button, bg);
+        border:1px solid map-get($modeler-button, line);
+        color:map-get($modeler-button, text);
+        padding:0 12px;
+        border-radius:4px;
+        height:24px;
+  
+        &:hover, &.active {
+          background-color:$u-main;
+          color:#fff;
+        }
+      }
+    }
+
+    // 모델러 info,project 토글버튼
+    .modeler-view-toggle {
+      @include flex;
+      button {
+        margin-left:4px;
+        width:24px;height:24px;
+        background:no-repeat center center/contain;
+
+        // 토글 버튼 타입
+        $types : 'info','project'; 
+         @each $type in $types {
+           &[data-toggle='#{$type}'] {
+             background-image:url($iconUrl + 'modeler_#{$type}_off.svg');
+
+             &:hover, &:focus, &[aria-pressed="true"] {
+              background-image:url($iconUrl + 'modeler_#{$type}_on.svg')
+             }
+           }
+         }
+      }
+
+    }
+  }
+  
+  %card-title {
+    @include font(14, 1, 600);
+    letter-spacing:-0.5px;
+    color:$u-main;
+  }
+
+  
+  .modeler-contents-wrap { 
+    margin:12px 0 0;
+    @include flex($j:space-between);
+    flex-wrap:nowrap;
+    .card {
+      background-color:#fff;
+    }
+
+    .card-title { 
+      @extend %card-title;
+      border-bottom:1px solid map-get($modeler, line);
+      padding-bottom:12px;
+      margin-bottom:8px;
+     } 
+
+     .card-body {
+      @include roundBox(12, 12);  
+     box-shadow:0 0 0 1px rgba(0,0,0,0.05);
+     }
+
+    .tree-wrap {
+      flex:0 0 208px;
+      padding:0; 
+      margin-right:20px;
+
+      .tree {
+        .tree-anchor {
+          font-size:11px;
+          line-height:1;
+          color:map-get($profile, text);
+          padding:5px 10px;
+          transition:0.3s;
+          border-radius:20px;
+
+          i.tree-icon {
+            display:none;
+          }
+  
+          &.tree-selected {
+            background-color:map-get($profile, active);
+            color:#fff;
+          }
+        }
+        .fa-flag {
+          display:none;
+        }
+      }
+    }
+
+    .project-wrap {
+      flex:1;
+      padding:0; 
+      max-width:none;
+    }
+
+    .node-wrap {
+      padding:0; 
+      margin-left:20px;
+      max-width:270px;
+      min-width:200px;
+      width:50%;
+
+      .module-title {
+        color:#444;
+        font-size:12px;
+      }
+
+    
+      
+      .node-box {
+        &:not(:first-of-type) {
+          margin-top:12px;
+        }
+        .tab-btn {
+          height:32px;
+          width:100%;
+          border-radius:4px;
+          color:#fff;
+          font-weight:600;
+          font-size:14px; 
+          &.a {
+            background-color:map-get($modeler-button, tab-a);
+          }
+          &.b {
+            background-color:map-get($modeler-button, tab-b);
+          }
+          &.c {
+            background-color:map-get($modeler-button, tab-c);
+          }
+        }
+      }
+
+
+    }
+  }
+}
+
+
+.test {
+  outline:1px solid red;
+}
+
+.modeler-save {
+  right:10px;
+  top:10px;
+  
+  button.btn { 
+    font-size:12px;
+    height:28px;
+    min-width:60px;
+
+  }
+}

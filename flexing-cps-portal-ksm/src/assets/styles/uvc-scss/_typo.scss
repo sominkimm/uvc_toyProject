@@ -1,0 +1,12 @@
+
+
+%box-title {
+  text-align:center; 
+  color:$u-main; 
+  @include font(27, 1, 600);
+}
+
+%description {
+  color:$modal-description;
+  @include font(14); 
+}

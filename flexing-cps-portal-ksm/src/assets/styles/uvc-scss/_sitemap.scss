@@ -1,0 +1,70 @@
+.sitemap-wrap {
+  position:fixed;
+  background-color:$modal-bg;
+  z-index:100;
+  left:0;top:0;bottom:0;right:0;
+  @include flex($j:center);
+
+  .inner {
+    left:20px;top:65px;
+    right:20px;bottom:20px;
+    position:fixed;
+    background-color:$u-main;
+    color:#fff;
+    border-radius:20px;
+    padding:50px;
+
+    @include flex($j:center);
+  }
+
+
+  .btn-sitemap-close {
+    position:absolute;
+    right:20px;top:20px;
+    @include icon('modal-close-wt.svg', 40, $size:24);
+    border-radius:50%;
+    border:1px solid #fff;
+    transition:0.4s;
+
+    &:hover, &:focus {
+      background-color:#fff;
+      background-image:url($iconUrl + 'modal-close.svg');
+      transform:rotate(45deg);
+    }
+  }
+
+  .gnb { 
+    .menu {
+      width:100%;
+      @include flex($a:flex-start,$j:space-between);
+      flex-wrap:wrap; 
+
+      a {
+        transition:0.4s;
+
+        &:hover {
+          opacity:0.5;
+        }
+      }
+
+      & > li {
+        flex-basis:calc(25% - 30px);
+        & > a { 
+          font-size:20px;
+          padding-bottom:10px; 
+        }
+        margin-bottom:50px;
+      }
+      
+    }
+
+    .sub {
+      li {
+        font-size:16px;
+        margin-bottom:10px;
+        opacity:0.7;
+      }
+    }
+  }
+ 
+}

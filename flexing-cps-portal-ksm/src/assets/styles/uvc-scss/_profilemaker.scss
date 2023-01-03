@@ -1,0 +1,243 @@
+.u-main-contents .main-content  {
+  .card.preprocessed-card { 
+    box-shadow:none;
+    border-radius:0;
+    }
+
+  .module-msgbox {
+    text-align:center;
+    padding:50px 0;
+
+    img {
+      margin-bottom:30px;
+    }
+    .title {
+      @include font(24, 1, 600);
+      color:$u-main;
+    }
+
+    .script {
+      margin-top:10px;
+      font-size:14px;
+      color:$t-guide;
+    }
+  }
+
+  %card-title {
+    @include font(14, 1, 600);
+    letter-spacing:-0.5px;
+    color:$u-main;
+  }
+  .u-profile-maker {
+    @include flex($a:stretch,$j:space-between);  
+
+    .tree {
+      .tree-anchor {
+        font-size:11px;
+        line-height:1;
+        color:map-get($profile, text);
+        padding:5px 10px;
+        transition:0.3s;
+        border-radius:20px;
+
+        &.tree-selected {
+          background-color:map-get($profile, active);
+          color:#fff;
+        }
+      }
+      .fa-flag {
+        display:none;
+      }
+    }
+
+
+    .profile-list, .profile-edit {
+     @include roundBox(12, 12);  
+     box-shadow:0 0 0 1px rgba(0,0,0,0.05);
+      
+     .card-title {
+      @extend %card-title;
+     }
+     .card-body {
+       padding:0;
+     }
+    }
+ 
+ 
+    .profile-list {
+     width:208px;
+     flex:0 0 208px;
+     margin-right:20px; 
+    }
+ 
+    .profile-edit {
+     flex:1;
+
+  
+     .card-title.header-wrap {
+      @include flex($j:space-between);
+       .left {
+        @include flex;
+       }
+       .heading {
+        color:map-get($profile, edit-title);
+        @include font(20, 1, 600);
+       }
+       .section-infowrap {
+        @include flex;
+        margin-left:10px;
+        margin-top:3px;
+        &:before {
+          content:'-';
+          margin-right:8px;
+        }
+        
+        dt, dd {
+          color:map-get($profile, edit-info);
+          @include font(13,1, normal);  
+          text-transform:uppercase;
+          }
+
+          dd {
+            font-weight:600;
+          }
+        }
+
+        dt:not(:first-child) {
+          margin-left:8px;
+        }
+       
+       
+     }
+    }
+  } // u-profile-maker
+
+
+  .module-profile-toolbar { 
+    @include flex;
+    li:not(:first-child) {
+      margin-left:4px;  
+    }
+
+    button.tool-btn {
+      width:24px;height:24px;
+      background:no-repeat center center/contain;
+      transition:0.4s;
+
+      &:hover {
+        @include shadow(3, rgba($u-shadow, 0.2));
+      }
+
+      // 버튼 타입
+      $types : 'create','modify','reload','delete','connect','save';
+      @each $type in $types {
+        &[data-tool='#{$type}'] {
+          background-image:url($iconUrl + '#{$type}_gray.svg');
+        }
+      }
+    }
+  } // module-toool-bar
+
+ 
+  .nav-tabs {
+    $color : map-get($profile, tab-active);
+    border-bottom-color:$color;
+    position:relative;
+    
+    .nav-item .nav-link {
+      border-radius:10px 10px 0 0;
+      padding:8px 0;
+      min-width:120px;
+      text-align:center;
+      @include flex($j:center);
+      border:1px solid #d8d8d8; 
+      border-bottom-color:$color;
+
+      &[aria-selected="false"] {
+        background-color:map-get($profile, tab-mute);
+        border-color:darken(map-get($profile, tab-mute), 10%);
+        border-bottom-color:$color;
+      } 
+    
+      &.active {
+        background-color:transparent;
+        border-color:$color $color #fff;
+        text-transform:capitalize; 
+      } 
+    }
+
+    
+    // .badge-primary[href] {
+    //   border-radius:50%;
+    //   background-color:$u-main;
+    //   width:20px;
+    //   height:20px;
+    //   border:1px solid $u-main;
+    //   &:hover, &:focus {
+
+    //   }
+    // }
+
+    .tab-close {
+      @include icon('tab_close.svg',18, $u-main, 10);
+      margin-left:4px;
+
+      &:hover, &:focus {
+        background-color:darken($u-main,10%);
+      }
+    }
+    
+  }
+
+  .tab-content {
+    position:relative;
+  }
+
+}
+  
+
+
+// OPCUA
+.taglist-header {
+  @include flex($j:space-between);
+  padding-bottom:12px;
+  .card-title {
+    margin:0;
+  }
+}
+
+
+
+.u-main-contents {
+  .tree-default {
+    .tree-icon, .tree-node, .tree-last {
+      background-repeat:repeat-y;
+      background-position: -292px -4px;
+      background-image:url($iconUrl + 'tree_icons.png');
+    } 
+  }
+}
+
+ 
+
+@include media($tablet) {
+  .u-main-contents .main-content .u-profile-maker {
+    .profile-edit {
+      .card-title.header-wrap {
+        .left {
+          display:block;
+        }
+
+        .section-infowrap{ 
+          margin-left:0;
+          &:before {
+            display:none;
+  
+          }
+        }
+      }
+    }
+  }
+}
+
+ 

@@ -1,0 +1,124 @@
+// buttons
+
+.uvc-container { 
+  .btn-container { 
+    button, a {
+      padding:16px;
+      text-align:center;
+      @include radius(3); 
+      font-size:20px; 
+      transition:0.4s;
+     
+    }
+  
+    .fill {
+      background-color:$u-main;
+      color:map-get($u-gray, wt);
+      &:hover {
+        background-color:darken($u-main, 10%);
+      }
+    }
+
+    .fill_wt {
+      background-color:map-get($u-gray, wt);
+      color:$u-main;
+      &:hover {
+        background-color:darken(white, 10%);
+      }
+    }
+  
+    .line {
+      @include border(rgba($u-main, 0.2));
+    }
+  
+    .light {
+      background-color:map-get($u-gray, wt);
+      color:$u-main;
+    }
+  
+  
+    &.full {
+      button, a {
+        width:100%;
+      }
+    }
+  } // btn-container
+
+  .input-wrap {
+    background-color:rgba($u-main, 0.07);
+    overflow:hidden;
+    border-radius:4px;
+    overflow:hidden;
+    padding:10px 18px; 
+
+    &.focus {
+      border-left:3px solid $u-main;
+    }
+    
+    input[type=text],
+    input[type=search],
+    input[type=number],
+    input[type=email],
+    input[type=password] {
+      border:none;
+      max-width:100%;
+      background-color:transparent;
+      &:focus {
+        outline:0;
+      } 
+
+      height:26px;
+    }
+
+    label {
+      color:map-get($u-blue, label);
+      display:block;
+      padding:6px 0;
+    }
+  }
+
+  .input-guide {
+    font-size:11px;
+    &.error {
+      color:map-get($u-form,red);
+    }
+
+    &.passed {
+      color:map-get($u-form,green);
+    }
+  }
+}
+
+
+// 목록관련
+.u-list {
+  li {
+    position:relative;
+    padding-left:10px;
+    &:before {
+      position:absolute;
+      left:0;
+      top:50%;
+      transform:translateY(-50%);
+      color:inherit;
+    }
+  }
+
+  &.bullet {
+    li:before {
+      content:'';
+      @include circle(4, white)
+    }
+  }
+}
+
+.flex-v {
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+
+.uvc-main-wrap {
+  
+}

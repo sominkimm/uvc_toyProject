@@ -1,0 +1,196 @@
+
+.uvc-sidebar { 
+  width:$sidebar;
+  transition:width 0.4s;
+  background-color:#fff; 
+  position:fixed !important;
+  top:42px;
+  left:0;
+  z-index:100;
+  bottom:0;
+  font-size:14px;
+  font-weight:500; 
+   
+  .company-logo {
+    padding:10px 0;
+    margin:0 20px;
+    height:70px;
+    text-align:center;
+
+    img {
+      max-width:calc(100% - 20px); 
+    }
+
+    border-bottom:1px solid map-get($u-gnb, line);
+
+    .home {
+      display:none;
+      img {
+        width:20px;
+      }
+    }
+  }
+
+  .main-menu {
+    li.Ul_li--hover {
+      padding:5px 20px;
+      &.opened {
+        background-color:map-get($u-gnb,openBox); 
+      }
+    }
+    .not-collapsed {
+      padding-bottom:10px;
+    }
+    .Ul_collapse {  
+      color:map-get($u-gnb,sub);
+      padding:2px 0 2px 29px; 
+      position:relative;
+
+      li a:before {
+        content:'';
+        @include circle(6, $u-bullet);
+        position:absolute;
+        left:calc(50% - 3px);
+        top:calc(50% - 3px);
+        display:none;
+      }
+    }
+    a.has-arrow {
+
+    }
+    a:hover {
+      color:map-get($uvc-color, main);
+    }
+  }
+
+
+  img.app-sidebar-icon {
+    width:19px; 
+    vertical-align:middle;
+  }
+
+  .menu-item {
+    margin-left: 10px;
+  }
+
+  .icon-arrow {
+    float:right;
+    height:23px;
+    @include flex;
+    .dd-arrow:before {
+      content:'';
+      display:block;
+    }
+
+    .i-Arrow-Up:before { 
+      @include icon('arrow_up_blue.svg',23);
+    }
+    .i-Arrow-Down:before { 
+      @include icon('arrow_down.svg',23);
+    }
+
+  }
+  
+}
+
+
+//styles > globals > layouts > uvc-vertical
+ 
+
+// 메뉴 닫힘
+.uvc-sidebar.closed {
+  width:60px;
+  .menu-item, .icon-arrow {
+    @include blind;
+  } 
+
+  img.app-sidebar-icon {
+    width:24px;
+  }
+
+  .main-menu {
+    li.Ul_li--hover {
+      padding:0;
+
+      a {
+        padding:5px;
+        @include flex($j:center);
+      }
+    }
+
+    .Ul_collapse { 
+      li {
+        
+       a:before {
+          display:block;
+        }
+
+        a span {
+          display:none;
+        }
+      }
+     }
+  }
+
+  .company-logo {
+    margin:0;
+    @include flex($j:center);
+    a { 
+      flex:1;
+      
+    }
+    .logo {display:none;}
+    .home {display:block; margin:0 auto;}
+  }
+}
+
+
+@include media($pc) {
+   .uvc-sidebar {
+      width:60px;
+      .menu-item, .icon-arrow {
+        @include blind;
+      } 
+
+      img.app-sidebar-icon {
+        width:24px;
+      }
+ 
+      .main-menu {
+        li.Ul_li--hover {
+          padding:0;
+
+          a {
+            padding:5px;
+            @include flex($j:center);
+          }
+        }
+
+        .Ul_collapse { 
+          li {
+            
+           a:before {
+              display:block;
+            }
+
+            a span {
+              display:none;
+            }
+          }
+         }
+      }
+
+      .company-logo {
+        margin:0;
+        @include flex($j:center);
+        a { 
+          flex:1;
+          
+        }
+        .logo {display:none;}
+        .home {display:block; margin:0 auto;}
+      }
+   }
+}
+
+ 

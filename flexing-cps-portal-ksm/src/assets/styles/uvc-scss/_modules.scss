@@ -1,0 +1,163 @@
+// 기존 폼 수정 
+.uvc-module {
+  $boxWidth : 100%;
+  $boxHeight : 46px;
+  $line : map-get($modal, line);
+
+  
+  .module-input {
+    label {
+      @extend %modal-label;
+    }
+
+    input.form-control, textarea, input[type=number], select {
+      @include font(14);
+      @include roundBox(4, $c:map-get($modal, field));
+      margin-top:8px; 
+      border-color:map-get($modal, line);
+ 
+    }
+
+    select, textarea {
+      width:$boxWidth;
+      font-size:inherit;
+      box-shadow:none;
+      &::placeholder {
+        color:map-get($modal, placeholder);
+        font-size:inherit;
+      }
+    }
+  
+    select{
+      height:$boxHeight; 
+    }
+  
+    textarea { 
+      border:none;
+    }
+
+    .input-group.flex {
+      @include flex;
+    }
+
+    &.form-group label {
+      margin-bottom:0;
+    }
+  }
+
+
+  // 버튼과 함께있는 텍스트 입력창
+  .module-input-btn {
+    width:100%;
+    label {
+      @extend %modal-label;
+    }
+
+    .input-group {
+      .input-group-append .btn {
+        height:$boxHeight;
+      }
+    }
+
+    .input-group [type="text"].form-control {
+      height:$boxHeight;  
+      border:1px solid #e0e4f4;
+      border-right:0;
+    }
+    .input-wrap {
+      margin-top:8px;
+      height:$boxHeight;
+      width:$boxWidth;
+      border-radius:4px;
+      @include roundBox(4, $c:map-get($modal, field));
+      @include flex($a:stretch);
+
+      border-color:map-get($modal, line);
+
+      input {
+        flex:1;
+        border-radius:4px 0 0 4px; 
+        font-size:inherit;
+      }
+
+      .btn-apply {
+        background-color:map-get($modal-button, apply);
+        color:#fff;
+        border-radius:0 4px 4px 0;
+        width:100px;
+      }
+       
+    }
+  }
+
+  .module-list { 
+    width:100%;
+    & > li {
+      border-bottom:1px map-get($modal, line) dashed;
+      padding:12px 0;
+    }
+
+    & > li:last-child, & > li:only-child {
+      border-bottom:none;
+      padding-bottom:0;
+    }
+
+    li.grid2 {
+      @include grid(2, 12, 20);
+    }
+
+  }
+
+  // 기본 텍스트 입력박스 정의
+  input {
+    $types : 'text', 'password','email','search','tel','url','number';
+    @each $type in $types {
+      &[type=#{$type}] {
+        background-color:transparent;
+        height:$boxHeight;
+        width:$boxWidth; 
+        padding:0 12px;
+        transition:background-color 0.4s;
+        border:1px solid $line;
+        &::placeholder {
+          color:map-get($modal, placeholder);
+          font-size:inherit;
+        }
+
+        &:focus {
+          // outline-color:alpha(80%);
+          background-color: darken(map-get($modal, field),2%); 
+          box-shadow:none;
+        }
+         
+      }
+    }
+  }
+
+  select, textarea {
+    width:$boxWidth;
+    &::placeholder {
+      color:map-get($modal, placeholder);
+      font-size:inherit;
+    }
+  }
+
+  select{
+    height:$boxHeight; 
+  }
+
+  textarea { 
+    border:none;
+  } 
+}
+
+
+table.module-table-tag {
+  th, td {
+    border:none;
+  }
+
+  tr {
+    border-bottom:1px solid map-get($table, line);
+  }
+}

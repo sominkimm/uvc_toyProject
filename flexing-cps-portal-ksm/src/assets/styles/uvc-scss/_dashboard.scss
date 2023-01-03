@@ -1,0 +1,221 @@
+.uvc-dashboard {
+  .dashboard-controller {
+    @include flex($j:space-between);
+    margin-bottom:15px;
+    box-shadow:none;
+  }
+
+   
+  .custom-dashboard {
+    @include flex;
+    select {
+      min-width:200px;
+      margin:0 8px;
+      border-color:$u-main;
+    }
+  }
+
+  
+  .components-controller {
+    background-color:$u-main;
+    height:42px;
+    border-radius:10px;
+    width:400px;
+    
+    @include flex($j:space-between);
+
+    li {
+      flex:1;
+      text-align:center;
+    }
+    li:not(:first-child) {
+      @include dash(1, 10, #566AAE, before, 0, 50%);
+      &:before {
+        transform:translateY(-50%);
+      }
+    }
+    $total : 6;
+    @for $i from 0 through $total {
+      li:nth-child(#{$i+1}) button {
+        @include icon('components-#{$i}.svg', 24, $r:0);
+        &:hover, &.active {
+          background-image:url($iconUrl + 'components-#{$i}-on.svg');
+        }
+      }
+    }
+  }
+
+}
+
+.uvc-dashboard {
+  .btn-toolbar {
+    background-color:$u-main;
+    height:42px;
+    border-radius:10px;
+    width:400px;
+    @include flex($j:space-between);
+
+    .btn-primary, .btn-outline-primary {
+      background-color:transparent;
+      border:none;
+    }
+
+    .dropdown-toggle {
+      padding:0;
+      &.btn {
+        padding-right:0;
+      }
+
+      &:after {
+        content:'';
+        display:none;
+      }
+    }
+    
+  }
+
+  .customizer {
+    z-index:100;
+  }
+}
+
+// 대쉬보드 툴바 밑 박스
+.uvc-dashboard .dashboard-board {
+  border:1px solid map-get($dashboard, line);
+  background-color:#fff;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+// 대쉬보드 컴포넌트 메뉴
+.uvc-dashboard .component-nav {
+  li { 
+    border-bottom:1px solid map-get($dashboard, line);
+    padding:10px;
+    @include flex($j:space-between);
+    cursor:pointer;
+    
+
+    &:hover {
+      .icon-box {
+        background-color:rgba($u-main, 0.5);
+      }
+    }
+  }
+  .icon-box {
+    width:40px;height:40px;
+    border-radius:50%;
+    border:2px solid map-get($dashboard, line);
+    @include flex($j:center);
+    flex-shrink:0;
+    margin-right:8px;
+    background-color:#fff;
+    transition:0.4s;
+    img {
+      width:60%;
+    }
+  }
+  dl[data-menu] {
+    // border:1px solid map-get($dashboard, line);
+    // border-radius:8px;
+    padding:12px;
+
+    dt {
+      color:$u-main;
+      font-size:16px;
+      font-weight:600;
+    }
+
+    dd {
+      line-height:1.2;
+      color:#999;
+    }
+  }
+}
+
+.uvc-dashboard .component-realtime {
+  .contents-header {
+    border-bottom:1px solid  map-get($dashboard, line);
+    @include flex($j:space-between);
+    padding-bottom:10px;
+
+    .switch {
+      @include flex($j:flex-end);  
+      span {
+        font-size:12px;
+        font-weight:600;
+      }
+    }
+
+    h3, .heading {
+      @include font(16, 1, 600);
+      color:$u-main;
+
+      small {
+        font-size:inherit;
+        color:inherit;
+      }
+    }
+  }
+}
+
+// 컴포넌트 메뉴 - 디바이스 관리
+.uvc-dashboard .component-device {
+  .inner {
+    .thumbs {
+
+    }
+
+    .contents {
+      .contents-header {
+        border-bottom:1px solid  map-get($dashboard, line);
+        @include flex($j:space-between);
+        padding-bottom:10px;
+      }
+      h3, .heading {
+        @include font(16, 1, 600);
+        color:$u-main;
+      }
+
+      .btn {
+        height:36px;
+        font-weight:600;
+        font-size:12px; 
+        background-color:$u-main;
+        color:#fff;
+        transition:0.4s;
+
+        &:hover {
+          box-shadow:0 0 10px rgba($u-main, 0.5);
+          color:rgb(112, 184, 255);
+        }
+      }
+    }
+
+    .company-details { 
+      li {
+        @include flex($j:space-between);
+
+        h6 {
+          font-weight:600;
+          color:#666;
+        }
+
+        .script {
+          text-align:right;
+          color:#566AAE;
+        }
+      }
+     
+    }
+  }
+}
+
+.badge-success {
+  background-color:map-get($badge, success);
+  border-radius:20px;
+  padding:0 6px;
+  height:16px;
+  text-transform:uppercase;
+  line-height:16px;
+}

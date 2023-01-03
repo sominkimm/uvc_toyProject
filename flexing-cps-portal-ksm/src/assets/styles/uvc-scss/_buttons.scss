@@ -1,0 +1,32 @@
+.u-btns {
+  display:flex;
+
+  a, button {
+    border-radius:8px;
+    background-color:$u-main;
+    color:#fff;
+    height:42px;
+    padding:0 20px; 
+    @include flex($j:center);
+    &:not(:first-child) {
+      margin-left:8px;
+    }
+
+    img {
+      width:19px;
+      margin-right:4px;
+    }
+
+    &.create {
+      background-color:map-get($u-btns, create)
+    }
+
+    &.modify {
+      background-color:#333;
+    }
+    &.delete {
+      background-color:#333;
+    }
+  }
+}
+

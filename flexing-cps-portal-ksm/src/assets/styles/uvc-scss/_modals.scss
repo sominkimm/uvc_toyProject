@@ -1,0 +1,581 @@
+.uvc-modal {
+  position:fixed;
+  background-color:$modal-bg;
+  z-index:100;
+  left:0;top:0;bottom:0;right:0;
+  @include flex($j:center);
+
+  header {
+    text-align:center;
+  }
+ 
+
+  .modal-box {
+    background-color:$modal-box;
+    border-radius:20px;
+    padding:60px 30px 18px;
+    max-width:750px;
+    max-height:90vh;
+    position:relative;
+  } 
+
+
+  .btn-close-circle {
+    position:absolute;
+    right:20px;top:20px;
+    @include icon('modal-close.svg', 40, $size:24);
+    border-radius:50%;
+    border:1px solid $u-main;
+    transition:0.4s;
+
+    &:hover, &:focus {
+      background-color:$u-main;
+      background-image:url($iconUrl + 'modal-close-wt.svg');
+      transform:rotate(45deg);
+    }
+  }
+
+}
+
+.uvc-modal {
+  &.signup-create {
+    h2 {
+      @extend %box-title; 
+      & + p {
+        @extend %description;
+      }
+    } 
+  }
+
+  .btn-container {
+    @include flex($j:center);
+    button:not(:first-child) {
+      margin-left:10px;
+    }
+   &.half {
+    text-align:center;
+     button {
+      @include centerBox(400); 
+     }
+    }
+
+    .prev {
+      $bg : map-get($u-button, prev);
+      background-color:$bg;
+      color:#fff;
+      &:hover {
+        background-color:darken($bg, 5); 
+      }
+    }
+
+    .next {
+      $bg : map-get($u-button, next);
+      background-color:$bg;
+      &:hover {
+        background-color:darken($bg, 5);
+      }
+      color:#fff;
+    }
+    &.confirm {
+      button {
+        width:100%;
+      }
+      .prev {
+        max-width:240px;
+      }
+
+      .next {
+        max-width:300px;
+      }
+    }
+  }
+
+
+}
+
+%modal-title {
+  text-align:center;
+  color:$u-main; 
+  letter-spacing:-1px; 
+  @include font(22, 1, 500);
+}
+
+%modal-subtitle {
+  @include font(12, 1.2, normal);
+  letter-spacing:-0.4px;
+  color:map-get($modal, subtitle);
+}
+
+%modal-label {
+  @include font(14, 1, 600);
+  letter-spacing:-0.4px;
+  color:map-get($modal, label);
+  display:block;
+}
+
+%modal-option-label {
+  @include font(13, 1, 600);
+  letter-spacing:-0.4px;
+  color:map-get($modal, option);
+  display:block;
+}
+
+%modal-field {
+  background-color:map-get($modal, field);
+}
+
+%modal-description {
+  color:map-get($modal, description);
+  @include font(12, 18px);
+  letter-spacing:-0.4px;
+  @include flex;
+  .ico {
+    @include icon('modal-info.svg', 18);
+    margin-right:4px;
+  }
+}
+
+.off {
+  display:none !important;
+}
+
+// 기존 모달 디자인 변경
+.close:not(:disabled):not(.disabled):hover, .close:not(:disabled):not(.disabled):focus {
+  opacity:1;
+}
+.modal-content {
+  @include roundBox(20, 30); 
+  position:relative; 
+  // @include flex($d:column, $j:space-between, $a:stretch);
+
+  .modal-header { 
+    padding:0 0 12px;
+    display:block;
+    text-align:center;
+    .modal-title {
+      @extend %modal-title; 
+    }
+  
+    .close {
+      margin:0;
+      position:absolute;
+      right:20px;
+      top:20px;
+      @include icon('modal_close.svg',24,$r:0);
+    }
+  }
+}
+ 
+ 
+
+// 신규 모달 디자인
+.modal-wrap {
+  position:fixed;
+  background-color:$modal-bg;
+  z-index:100;
+  left:0;top:0;bottom:0;right:0;
+  @include flex($j:center);
+
+}
+
+
+ 
+
+.modal-wrap, .uvc-module {
+
+  .close-icon {
+    position:absolute;
+    right:0;top:0; 
+    @include icon('modal-close.svg', 24, $size:20, $r:0);
+  }
+  
+  .white-box {
+    width:100%;  
+    max-width:600px;
+    @include roundBox(20, 30); 
+    @include flex($d:column, $j:space-between, $a:stretch);
+  }
+
+  .confirm-box {
+    width:100%;  
+    max-width:400px;
+    @include roundBox(20, 30); 
+    @include flex($d:column, $j:space-between, $a:stretch); 
+    h3 {
+      text-align:center;
+      padding:20px 0;
+      @include font(20, 1, 400);
+      b {
+        font-weight:600;
+      }
+    }
+
+    strong {
+      @include font(12, 1.2, 500);
+      color:map-get($modal-button, delete);
+      &:before {
+        content:'※';
+        margin-right:4px;
+      }
+    }
+  }
+  header {
+    h3 {
+      @extend %modal-title;
+      padding-bottom:20px;
+      border-bottom:1px solid map-get($modal, line);
+      margin-bottom:8px;
+    }
+
+    p {
+      @extend %modal-subtitle;
+    }
+  }
+
+  header.has-close {
+    position:relative;
+    h3 {
+      text-align:left;
+    }
+
+  }
+
+  footer {
+    padding-top:20px;
+  }
+
+
+  .contents-wrap { 
+    @include flex; 
+    min-height:180px;
+
+    .contents-inner {
+      flex:1;
+      &.scroll {
+        max-height:$scroll-height;
+        overflow-y:auto;
+        overflow-x:hidden;
+      }
+    }
+  }
+
+    //여러가지 모듈이 있을때
+    .module-list { 
+      width:100%;
+      & > li {
+        border-bottom:1px map-get($modal, line) dashed;
+        padding:12px 0;
+      }
+
+      & > li:last-child, & > li:only-child {
+        border-bottom:none;
+        padding-bottom:0;
+      }
+
+      li.grid2 {
+        @include grid(2, 12, 20);
+      }
+ 
+    }
+
+    $boxWidth : 100%;
+    $boxHeight : 46px;
+
+
+    // 기본 텍스트 입력박스 정의
+    input {
+      $types : 'text', 'password','email','search','tel','url','number';
+      @each $type in $types {
+        &[type=#{$type}] {
+          background-color:transparent;
+          height:$boxHeight;
+          width:$boxWidth; 
+          padding:0 12px;
+          transition:background-color 0.4s;
+          &::placeholder {
+            color:map-get($modal, placeholder);
+            font-size:inherit;
+          }
+
+          &:focus {
+            // outline-color:alpha(80%);
+            background-color: darken(map-get($modal, field),2%);
+          }
+           
+        }
+      }
+    }
+
+    select, textarea {
+      width:$boxWidth;
+      &::placeholder {
+        color:map-get($modal, placeholder);
+        font-size:inherit;
+      }
+    }
+
+    select{
+      height:$boxHeight; 
+    }
+
+    textarea { 
+      border:none;
+    }
+ 
+    // 모듈항목의 타이틀
+    .module-title {
+      @extend %modal-label;
+    }
+
+    // 모듈내 옵션 타이틀
+    .option-title {
+      @extend %modal-option-label;
+    }
+
+    // 모듈의 셀렉트 박스
+    .module-select {
+      select { 
+        @include font(14);
+        margin-top:8px; 
+        color:map-get($modal, placeholder);
+      }
+      .description {
+        margin-top:8px;
+        @extend %modal-description; 
+      }
+    }
+ 
+
+    // 모듈의 텍스트입력박스
+    .module-input {
+      .input-wrap {
+        position:relative;
+
+        input, textarea {
+          @include font(14);
+          @include roundBox(4, $c:map-get($modal, field));
+          margin-top:8px; 
+        }
+
+        .unit {
+          position:absolute;
+          right:20px;
+          color:map-get($modal, unit); 
+          @include font(12, 1, 600);
+          top:calc(50% + 4px);
+          transform:translateY(-50%);
+        }
+
+      
+      }
+     
+
+      .description {
+        margin-top:8px;
+        @extend %modal-description; 
+      }
+
+      &.msgbox {
+        margin-top:12px;
+        textarea {
+          height:110px;
+          padding:12px;
+        }
+      }
+    }
+
+    // 모듈 선택박스
+    .module-checkbox {
+      .list {
+        padding:12px 0 0;
+        @include grid(2, 10, 10);  
+        @include font(14, 1, 500);
+        color:map-get($modal, mute);
+        
+        
+        input:checked + label {
+          color:$u-main;
+        }
+
+      }
+    }
+
+    // 모듈 라디오 박스
+    .module-radio {
+      .list {
+        margin-top:8px;
+        label:not(:first-child) {
+          margin-left:20px;
+        }
+      }
+    }
+
+    // 모듈 이미지 업로드 
+    .module-image-upload {
+      .header {
+        @include flex($j:space-between);
+      }
+
+      .upload-btn {
+        border:1px solid map-get($modal, upload);
+        @include radius(8);
+        @include flex($j:center,$d:column);
+        width:100%;
+        height:180px;
+        margin-top:8px;
+        background-color:#FBFBFB;
+
+        &:hover {
+          @include shadow(3, rgba($u-shadow, 0.4));
+        } 
+      }
+      .tools {
+        button.tool-btn {
+          width:24px;height:24px;
+          background:no-repeat center center/contain;
+          transition:0.4s;
+          &:not(:first-child) {
+            margin-left:4px;
+          }
+      
+          &:hover {
+            @include shadow(3, rgba($u-shadow, 0.2));
+          }
+      
+          // 버튼 타입
+          $types : 'create','modify','reload','delete','connect','save';
+          @each $type in $types {
+            &[data-type='#{$type}'] {
+              background-image:url($iconUrl + '#{$type}_gray.svg');
+            }
+          }
+        }
+      }
+    }
+
+    // 디바이스 프로파일 밑 옵션4개
+    .module-options {
+      @include grid(4, 10, 10);
+      margin-top:14px;
+    }
+
+    //모듈 버튼리스트
+    .module-objects {
+      @include grid(2, 10, 10);
+      button,img,span {
+        transition:0.4s;
+      }
+
+      button { 
+        @include roundBox(10, 0, #fff, $h:40);
+        border:1px solid map-get($modal, line);
+        @include font(14, 1, 500); 
+
+        span {
+          color: map-get($modal-button, dark); 
+        }
+
+        img {
+          margin-right:20px; 
+          width:24px;
+        }
+ 
+      //   &:hover {
+      //     background-color:$u-main;
+      //     img {  
+      //       opacity:0;  
+      //       transform:translateX(-24px);  
+      //     }
+          
+      //     span {
+      //       color:#fff;  
+      //       transform:translateX(-24px);
+      //     }
+      //   }
+      }
+    }
+  }
+ 
+
+
+ 
+
+// -- modal buttons 
+
+%buttons {
+  @include roundBox(8, $h:58, $c:map-get($modal-button, default));
+  cursor:pointer;
+  border:1px solid $u-main;
+  @include font(18, 1, 500);
+  color:map-get($modal-button, text);
+  flex:1;
+  transition:0.4s; 
+  box-shadow:0 0 0 rgba($u-main,0);
+  max-width:200px;
+
+  &:hover {
+    box-shadow:0 0 10px rgba($u-main, 0.3);
+  }
+
+  &.next {
+    background-color:map-get($modal-button, submit);
+    color:map-get($modal-button, submit-text);
+    // flex:0 1 230px;
+  }
+
+  &.delete {
+    $bg : map-get($modal-button, delete);
+    background-color:$bg;
+    color:#fff;
+    border-color:darken($bg, 10%);
+  }
+}
+
+.modal-btns, .modal-footer {
+  @include flex($j:center);
+  gap :8px;
+  a, button {
+    @extend %buttons;
+    
+  }
+}
+
+.modal-body {
+  .vgt-table.tableOne {
+    thead {
+      th {
+        color:map-get($datagrid, header); 
+        font-weight:600;
+      }
+    }
+  }
+}
+
+ 
+
+.modal-footer {
+  border-top:none;
+}
+
+@include media($tablet) {
+  .modal-wrap {
+
+    .white-box {
+      padding:25px;
+    }
+  }
+}
+
+@include media($android) {
+  .modal-wrap { 
+    .white-box {
+      padding:15px;
+    }
+  }
+}
+
+
+// 모든 테이블 동일
+.dx-datagrid {
+  background-color:#fff;
+}

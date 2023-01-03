@@ -1,0 +1,337 @@
+@charset "utf-8";
+
+/* Default */
+@mixin blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+
+@mixin media($width) {
+  $width: unitCheck($width);
+  @media all and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin circle($size, $color: null) {
+  display: block;
+  width: $size + px;
+  height: $size + px;
+  border-radius: 50%;
+  background-color: $color;
+}
+
+@mixin height($size) {
+  height: $size + px;
+  line-height: $size + px;
+}
+ 
+@mixin flex($a: center, $j: null, $w: null, $d: null) {
+  display: flex;
+  align-items: $a;
+  justify-content: $j;
+  flex-wrap: $w;
+  flex-direction: $d;
+}
+
+@mixin grid($count, $gapX, $gapY:null) {
+  display:grid;
+  grid-template-columns:repeat($count, 1fr);
+  $gapX : unitCheck($gapX);
+  $gapY : unitCheck($gapY);
+
+  
+  @if $gapY == null {
+    grid-gap:$gapX;
+  } @else {
+    grid-column-gap:$gapX;
+    grid-row-gap:$gapY;
+  }
+}
+
+@mixin gridRow($size) {
+  display:grid;
+  grid-gap:unitCheck($size);
+}
+
+@mixin centerBox($size) {
+  width: 100%;
+  max-width:unitCheck($size);
+  margin-left: auto;
+  margin-right: auto;
+}
+@mixin center($p: absolute) {
+  position: $p;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin border($c: null,$not:null, $r: null) {
+  border: 1px solid $c;
+
+  @if not($r == null) {
+    border-radius: #{$r}px;
+  }
+
+  @if not($not == null) { 
+    border-#{$not}-color:transparent;
+  }
+}
+
+@mixin box($w, $h: null, $d: block) {
+  width: unitCheck($w);
+  @if ($h) {
+    height: unitCheck($h);
+  } @else {
+    height: unitCheck($w);
+  }
+
+  display: $d;
+}
+
+@mixin graybox($p: null, $bg: $gray-box, $r: null) {
+  padding: unitCheck($p);
+  background-color: $bg;
+  @if not $r == null {
+    @include radius($r);
+  }
+}
+
+@mixin font($size, $row: null, $wt: null) {
+  font-size: $size + px;
+  font-weight: $wt;
+
+ 
+  @if ($row !=null) {
+    line-height: $row;
+  }
+ 
+}
+
+@mixin dash(
+  $w: null,
+  $h: null,
+  $c: null,
+  $way: after,
+  $l: null,
+  $t: null,
+  $r: null,
+  $b: null
+) {
+  $w: unitCheck($w);
+  $h: unitCheck($h);
+  $l: unitCheck($l);
+  $t: unitCheck($t);
+  $r: unitCheck($r);
+  $b: unitCheck($b);
+
+  position: relative;
+  &:#{$way} {
+    content: "";
+    position: absolute;
+    width: $w;
+    height: $h;
+    background-color: $c;
+    left: $l;
+    top: $t;
+    right: $r;
+    bottom: $b;
+    transition: 0.4s;
+  }
+}
+
+@mixin radius($size) { 
+  $size : unitCheck($size);
+  border-radius:$size;
+}
+
+@mixin effect($time: 0.4s, $type: null) {
+  transition: $type $time;
+}
+
+@mixin outline($color: red) {
+  outline: 1px solid $color;
+}
+
+@mixin padding($l, $r: null) {
+  $l: unitCheck($l);
+  @if ($r) {
+    $r: unitCheck($r);
+  }
+  padding-left: $l;
+  @if ($r) {
+    padding-right: $r;
+  } @else {
+    padding-right: $l;
+  }
+}
+
+@mixin margin($l, $r: null) {
+  $l: unitCheck($l);
+  $r: unitCheck($r);
+  
+  margin-left: $l; 
+  @if $l == 'auto' {
+    margin-left:$l;
+  } @else {
+    margin-right:$r;
+  }
+}
+
+@mixin auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@mixin position(
+  $l: null,
+  $t: null,
+  $r: null,
+  $b: null,
+  $p: absolute,
+  $w: null,
+  $h: null
+) {
+  position: $p;
+  left: unitCheck($l);
+  top: unitCheck($t);
+  right: unitCheck($r);
+  bottom: unitCheck($b);
+  width: unitCheck($w);
+
+  @if (height: null) {
+    height: unitCheck($w);
+  } @else {
+    height: unitCheck($h);
+  }
+}
+
+ 
+
+@mixin speech-arrow(
+  $img: null,
+  $w: 18,
+  $h: 29,
+  $l: null,
+  $t: null,
+  $r: null,
+  $b: null
+) {
+  &:before {
+    content: "";
+    position: absolute;
+    @include icon($img, $w, $h);
+    left: unitCheck($l);
+    top: unitCheck($t);
+    right: unitCheck($r);
+    bottom: unitCheck($b);
+    z-index: -1;
+  }
+}
+
+@mixin speech-arrow-cover(
+  $bg: #fff,
+  $w: 18,
+  $h: 1,
+  $l: null,
+  $t: null,
+  $r: null,
+  $b: null
+) {
+  &:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: unitCheck($w);
+    height: unitCheck($h);
+    background: $bg;
+    left: unitCheck($l);
+    top: unitCheck($t);
+    right: unitCheck($r);
+    bottom: unitCheck($b);
+    z-index: 2;
+  }
+}
+
+@mixin setChild($l: null, $t: null, $r: null, $b: null) {
+  position: relative;
+  $pos_array: $l, $t, $r, $b;
+
+  .child {
+    position: absolute;
+    left: unitCheck($l);
+    top: unitCheck($t);
+    right: unitCheck($r);
+    bottom: unitCheck($b);
+  }
+}
+
+@mixin decimal($count) {
+  li {
+    position: relative;
+    padding-left: 17px;
+    @for $i from 1 through $count {
+      &:nth-child(#{$i}) {
+        &:before {
+          content: "#{$i}.";
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+    }
+  }
+}
+
+@mixin fullBg($img) {
+  background-image: url($url + $img);
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin bgCenter($size: cover) {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+
+@mixin colorLicense($obj) {
+  background-color:map-get($license-color, $obj);
+}
+
+
+// 원형 아이콘
+@mixin icon($img, $w, $c:null, $size:contain, $r:50%) {
+  $w : unitCheck($w); 
+  $size : unitCheck($size);
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-size:$size; 
+  width:$w;
+  height:$w;
+  border-radius:$r;
+  background-color:$c;
+  background-image:url($iconUrl + $img);
+} 
+
+ 
+@mixin roundBox($r, $p:null, $c:#fff, $w:null, $h:null) {
+  @include radius($r);
+  padding:unitCheck($p);
+  background-color:$c;
+  width:unitCheck($w);
+  height:unitCheck($h);
+}
+
+@mixin shadow($blur:5, $color:$u-shadow) {
+  $blur : unitCheck($blur);
+  box-shadow:0 0 $blur $color;
+}

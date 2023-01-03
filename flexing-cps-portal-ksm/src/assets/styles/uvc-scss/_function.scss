@@ -1,0 +1,18 @@
+@function unitCheck($x) {
+  // 단위체크
+  @if (type-of($x) == number) {
+    @if (unitless($x)) {
+      @if ($x == 0) {
+        @return $x;
+      } @else if ($x == null) {
+        @return null;
+      } @else {
+        @return $x + px;
+      }
+    }
+  }
+
+  @return $x;
+}
+
+ 

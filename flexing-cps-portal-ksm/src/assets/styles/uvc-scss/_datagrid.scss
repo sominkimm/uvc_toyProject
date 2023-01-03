@@ -1,0 +1,304 @@
+// 기존 디자인 리셋하기
+.u-main-contents .product-cart {
+  .dx-row {
+    border:none;
+  }
+  .dx-column-lines {
+    td {
+      border:none;
+    }
+  }
+
+  .dx-datagrid .dx-datagrid-content-fixed .dx-datagrid-table .dx-col-fixed {
+    // background-color:transparent;
+  }
+
+  .dx-datagrid-content .dx-datagrid-table .dx-row > td, 
+  .dx-datagrid-content .dx-datagrid-table .dx-row > tr > td {
+    vertical-align:middle;
+  }
+
+  // 기존 선 없애기
+  .dx-datagrid-borders .dx-datagrid-rowsview, 
+  .dx-datagrid-headers + .dx-datagrid-rowsview,
+  .dx-datagrid-borders > .dx-datagrid-filter-panel, 
+  .dx-datagrid-borders .dx-datagrid-headers .dx-datagrid-table,
+  .dx-datagrid-headers .dx-datagrid-table .dx-row > td,
+  .dx-datagrid .dx-datagrid-headers .dx-row td.dx-pointer-events-none, .dx-datagrid .dx-datagrid-rowsview .dx-data-row td.dx-pointer-events-none, .dx-datagrid .dx-datagrid-rowsview .dx-freespace-row td.dx-pointer-events-none, .dx-datagrid .dx-datagrid-rowsview .dx-header-row td.dx-pointer-events-none, .dx-datagrid .dx-datagrid-rowsview .dx-virtual-row td.dx-pointer-events-none {
+    border:none;
+  }
+  .dx-datagrid-borders > .dx-datagrid-headers {
+    border-width:0 0 2px;
+  }
+  
+  // pager 영역
+  .dx-datagrid-pager {
+    border:none;
+  }
+
+  .dx-datagrid-header-panel {
+    .dx-toolbar {
+      background-color:transparent;
+    }
+  }
+
+  // 기존 배경 없애기, 선택되었을때 행에 :hover했을 때
+  .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > td, 
+  .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused) > tr > td, 
+  .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > td, 
+  .dx-datagrid-rowsview .dx-selection.dx-row:not(.dx-row-focused):hover > tr > td {
+    background-color:transparent;
+  }
+}
+
+// 신규디자인 모듈
+.module-tool-bar { 
+  @include flex;
+  li:not(:first-child) {
+    margin-left:4px;  
+  }
+
+  button.tool-btn {
+    width:24px;height:24px;
+    background:no-repeat center center/contain;
+    transition:0.4s;
+
+    &:hover {
+      @include shadow(3, rgba($u-shadow, 0.2));
+    }
+
+    // 버튼 타입
+    $types : 'create','modify','reload','delete','connect','save';
+    @each $type in $types {
+      &[data-tool='#{$type}'] {
+        background-image:url($iconUrl + '#{$type}_gray.svg');
+      }
+    }
+  }
+} // module-toool-bar
+
+.module-item-control { 
+  @include flex;
+  li:not(:first-child) {
+    margin-left:4px;  
+  }
+
+  button.tool-btn {
+    width:24px;height:24px;
+    background:no-repeat center center/contain;
+    transition:0.4s;
+
+    // 버튼 타입
+    $types : 'list','docker','modify';
+    @each $type in $types {
+      &[data-tool='#{$type}'] {
+        background-image:url($iconUrl + 'item_#{$type}.svg');
+
+        &:hover {
+          background-image:url($iconUrl + 'item_#{$type}_on.svg');
+        }
+      }
+    } 
+  }
+} // module-toool-bar
+
+
+
+// 신규디자인 적용하기
+.u-main-contents .product-cart {
+
+  .dev-dextable {
+    background-color:#fff;
+    border-radius:12px;
+    overflow:hidden;
+  }
+
+    .dx-datagrid {
+    background-color:transparent;
+  }
+
+  // toolbox 있는 곳
+  .dx-datagrid-header-panel { 
+    padding:12px 20px 0;
+
+    .dx-group-panel-message {
+      @include font(13, $wt:600);
+      color:$u-main;
+      padding:0;
+    } 
+  }  
+
+  // 테이블 제목
+  .dx-datagrid-headers {
+    color:map-get($datagrid, header);
+    border-bottom:2px solid map-get($datagrid, line);
+    td {
+      height:48px;
+    }
+  }
+
+  .dx-datagrid-content .dx-datagrid-table .dx-row > td, 
+  .dx-datagrid-content .dx-datagrid-table .dx-row > tr > td {
+    height:48px;
+  }
+
+  .dx-datagrid-headers, .dx-datagrid-rowsview {
+    .dx-checkbox-icon {
+      @include icon('checkbox-off.svg',18, $c:transparent, $r:0);
+      border:none;
+
+      &:before {
+        display:none;
+      }
+    }
+
+    .dx-checkbox-checked .dx-checkbox-icon { 
+      background-image:url($iconUrl + 'checkbox-on.svg');
+       
+        &:before { 
+          display:none;
+        } 
+    }
+  }
+
+  // data 행.
+  .dx-datagrid-rowsview .dx-row {
+    color:map-get($datagrid, text); 
+    border-bottom:1px solid map-get($datagrid, line);
+
+    .title {
+      color:map-get($datagrid, title);
+      font-weight:500;
+    }
+
+    td:first-child {
+      position:relative;
+
+      &:before {
+        content:'';
+        display:block;
+        width:4px; 
+        position:absolute;
+        left:0;top:0;bottom:0;
+        background-color:transparent;
+        transition:0.4s;
+      }
+    }
+    &.dx-state-hover, &.dx-selection {
+      background-color:map-get($datagrid, hover);
+      
+      td:first-child:before {
+        background-color:map-get($datagrid, active);
+      }
+    }
+
+    img {
+      width:33px !important;
+      height:28px !important;
+      &.rounded {
+        border-radius:3px !important;
+      }
+    }
+
+    
+   
+  } // .dx-row
+
+  // 하단 페이저 부분
+  .dx-datagrid-pager {
+    padding:10px 20px;
+    @include flex($j:space-between);
+
+    // left
+    .dx-page-sizes {
+      float:none;
+    }
+
+    // right
+    .dx-pages {
+      float:none;
+
+      .dx-info {
+        opacity:1;
+        font-size:11px;
+      }
+
+      // 화살표 부분
+      .dx-page-indexes {
+        .dx-selection {
+          background-color:$u-main;
+          color:#fff;
+          font-size:11px;
+        }
+      }
+
+      .dx-page {
+        margin:1px;
+      }
+      .dx-prev-button, .dx-next-button {
+        &:before {
+          content:'';
+          width:20px;
+          height:20px;
+          background:no-repeat center center/contain;
+        }
+      }
+
+      .dx-prev-button:before {
+        background-image:url($iconUrl + 'arrow_left.svg');
+      }
+      .dx-next-button:before {
+        background-image:url($iconUrl + 'arrow_right.svg');
+      }
+    }
+    
+  }
+
+ 
+
+  
+  .dx-page-sizes {
+    $bg : map-get($datagrid, pager);
+    .dx-page-size {
+      font-size:12px;   
+      position:relative;
+      padding:2px 3px;
+      &:before {
+        content:'';
+        display:block; 
+        height:0;
+        background-color:$bg;
+        position:absolute;
+        left:0;bottom:-2px;
+        width:100%;
+        transition:0.4s;
+      }
+
+      &:hover {
+        color:$bg;
+      }
+      &:hover:before {
+        height:2px;
+      }
+      &.dx-selection {
+        font-weight:600;
+        background-color:transparent;
+        &:before {
+
+          height:2px; 
+        }
+      }
+    }
+  }
+ 
+
+
+  .dx-datagrid-rowsview .dx-select-checkboxes-hidden > tbody > tr > td > .dx-select-checkbox {
+    display:inline-block;
+  }
+  
+  
+} //.product-cart
+
+ 
+

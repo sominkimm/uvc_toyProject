@@ -1,0 +1,150 @@
+$u-main : #3b52a0;
+$u-bullet : rgb(191, 209, 225);
+$u-gray : (
+  wt : white,
+  bk : #222,
+  guide : #62697c,
+  price :#8f8e8d,
+  bg : #f2f3f4,
+);
+$u-shadow :#3B52A0;
+
+$u-blue : (
+  light : #7585bc,
+  medium : #4d74b8, // tabmenu
+  label : #7a98cf,
+  box : #2b2b61,
+  mute : rgba(#4d74b8, 0.35),
+);
+
+$t-guide : #62697c;
+$u-orange : #eda313;  
+
+// modal design
+$modal-bg : rgba(#21223a, 0.8);
+$modal-box : #fff;
+$modal-description : #7a7a79;
+
+$uvc-color : (
+  main : #3B52A0,
+);
+
+$u-form :  (
+  red : #e4033a,
+  green : #8ab426,
+  
+);
+
+$u-line : #e1e1e1;
+
+$u-button : (
+  prev : #b5b5b4,
+  next : $u-main,
+);
+
+$license-color : (
+  free : #ECECEC,
+  lite : #95D2DB,
+  pro : #8CC09D,
+  business : #8067AB
+);
+
+$fixedbar : #F3F7F7;
+$body-bg : #E7ECF2;
+$u-gnb : (
+  menu : #272B40,
+  sub : #567EBF,
+  openBox : #F3F5F5,
+  line : #E7ECF3,
+);
+
+$u-body : (
+  line : #C5D1E0,
+  script: #768BB4,
+  new : #EE7128,
+);
+
+$u-btns : (
+  create : #EE7128, 
+);
+
+// modals design
+$modal : (
+  line : #e0e4f4,
+  subtitle : #6F6E6D,
+  label : #444,
+  field : #F7F8FB,
+  placeholder : #8597D4,
+  description : $u-main,
+  mute : #858585,
+  option : $u-main,
+  unit : $u-main,
+  upload : #D5DBF0,
+);
+
+$modal-button : ( 
+  default : #F7F8FD, // 기본 버튼 배경색
+  submit : $u-main, // 전송버튼 배경색
+  text : $u-main, // 기본 버튼 글자 색
+  submit-text : #fff, // 전송버튼 글자 색 
+  dark : #2E2E4F,
+  delete : #e4033a,
+  apply : $u-main,
+);
+
+
+//dashboard
+$dashboard : (
+  line : #dce2ea,
+);
+
+// dx-datagrid 플러그인 
+
+$datagrid : (
+  line : #DCE2EA, 
+  active : #4C8ADD,
+  hover : #F4F5FA,
+  title : #3B52A0,
+  text : #5A5C63,
+  header : #7E8084, 
+  checked : #3b52a0,
+  pager : rgb(114, 151, 225),
+);
+
+$badge : (
+  sucess : #42ae73,
+);
+
+
+// profile maker
+$profile : (
+  text : #232323,
+  active : $u-main,
+  edit-title : $u-main,
+  edit-info : #343434,
+  tab-active : $u-main,
+  tab-mute : #f3f3f3,
+);
+
+$table : (
+  line:#DCE2EA,
+);
+
+
+$modeler : (
+  line: #DCE2EA, 
+);
+
+
+$modeler-button : (
+  bg : #F4F5F5,
+  line : #DCE2EA,
+  text : #566AAE, 
+  tab-a : #4661BC,
+  tab-b : #8DB07D,
+  tab-c : #7380FF,
+  tab-d : #7380FF,
+  tab-e : #7380FF,
+  tab-f : #7380FF,
+  // _modeler.scss 에서 .tab-btn을 검색하세요.
+);
